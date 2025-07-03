@@ -102,8 +102,8 @@ used for common project commands.
 Copy and paste the following into your terminal to run the install script:
 
 ```bash
-export REPOSITORY_LOCATION="https://raw.githubusercontent.com/epicserve/django-base-site/"
-bash <(curl -s ${REPOSITORY_LOCATION}/main/scripts/start_new_project)
+export REPOSITORY_RAW_LOCATION="https://raw.githubusercontent.com/epicserve/django-base-site/"
+bash <(curl -s ${REPOSITORY_RAW_LOCATION}/main/scripts/start_new_project)
 ```
 
 Running the script mostly does the same thing as manual method. The exception is that the install script has
@@ -115,8 +115,8 @@ because Vite is running in dev mode which takes a few seconds to take effect.
 Example output:
 
     $ cd ~/Sites
-    $ export REPOSITORY_LOCATION="https://raw.githubusercontent.com/epicserve/django-base-site/"
-    $ bash <(curl -s ${REPOSITORY_LOCATION}/main/scripts/start_new_project)
+    $ export REPOSITORY_RAW_LOCATION="https://raw.githubusercontent.com/epicserve/django-base-site/"
+    $ bash <(curl -s ${REPOSITORY_RAW_LOCATION}/main/scripts/start_new_project)
     
     What is the project name slug [example]?
     What directory do you want your project in [/Users/brento/Sites/example]?
