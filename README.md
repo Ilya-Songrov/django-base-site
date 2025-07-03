@@ -104,7 +104,7 @@ Copy and paste the following into your terminal to run the install script:
 ```bash
 export GITHUB_USER="epicserve"
 export BRANCH="main"
-bash <(curl -s https://raw.githubusercontent.com/${GITHUB_USER}/${BRANCH}/scripts/start_new_project)
+bash <(curl -s https://raw.githubusercontent.com/${GITHUB_USER}/django-base-site/${BRANCH}/scripts/start_new_project)
 ```
 
 Running the script mostly does the same thing as manual method. The exception is that the install script has
@@ -118,7 +118,7 @@ Example output:
     $ cd ~/Sites
     $ export GITHUB_USER="epicserve"
     $ export BRANCH="main"
-    $ bash <(curl -s https://raw.githubusercontent.com/${GITHUB_USER}/${BRANCH}/scripts/start_new_project)
+    $ bash <(curl -s https://raw.githubusercontent.com/${GITHUB_USER}/django-base-site/${BRANCH}/scripts/start_new_project)
     
     What is the project name slug [example]?
     What directory do you want your project in [/Users/brento/Sites/example]?
