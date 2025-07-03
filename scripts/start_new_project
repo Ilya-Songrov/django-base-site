@@ -9,8 +9,8 @@ if [[ -n "$4" ]]; then
   PROJECT_DIRECTORY=$4
 fi
 
-REPOSITORY_RAW_LOCATION="${REPOSITORY_RAW_LOCATION:-https://raw.githubusercontent.com/epicserve/django-base-site}"
-ARCHIVE_LOCATION="${REPOSITORY_RAW_LOCATION}/archive/"
+GITHUB_USER="${GITHUB_USER:-epicserve}"
+ARCHIVE_LOCATION="https://github.com/${GITHUB_USER}/django-base-site/archive/"
 DOWNLOAD_LOCATION="${ARCHIVE_LOCATION}${BRANCH}.zip"
 PROJECT_NAME_SLUG_DEFAULT='example'
 PROJECT_DIRECTORY_DEFAULT="$(pwd)/$PROJECT_NAME_SLUG_DEFAULT"
