@@ -99,6 +99,8 @@ if [[ "yes" = $(ask_yes_or_no_default_yes "Do you want to clean up Docker volume
   just clean_docker_volumes_with_db
 fi
 
+echo "pwd: $PWD"
+echo "ls: ls"
 just clean_extra_files
 sed -i '' "s|image: epicserve/django-base-site|image: ${PROJECT_NAME_SLUG}|" compose.yml
 sed -i '' "s|django-base-site|${PROJECT_NAME_SLUG}|" justfile
