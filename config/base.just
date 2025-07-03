@@ -76,6 +76,13 @@ reset := `tput -Txterm sgr0`
         docker volume rm $volumes; \
     fi
 
+# Remove all docker volumes
+@clean_docker_volumes_with_db: clean_docker_images
+    volumes=$(docker volume ls | grep {{ project_slug }} | awk '{print $2}'); \
+    if [[ -n $volumes ]]; then \
+        docker volume rm $volumes; \
+    fi
+
 # Remove cached Python bytecode
 @clean_py_cache:
     rm -r `find . -name '__pycache__' -type d`

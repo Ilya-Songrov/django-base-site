@@ -87,17 +87,16 @@ SECRET_KEY=$SECRET_KEY
 POSTGRES_USER=${PROJECT_NAME_SLUG}
 POSTGRES_DB=${PROJECT_NAME_SLUG}
 POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-POSTGRES_PORT=5432
-PGPORT=\${POSTGRES_PORT}
-DATABASE_URL=postgres://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@db:\${POSTGRES_PORT}/\${POSTGRES_DB}
+PGPORT=5432
+DATABASE_URL=postgres://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@db:\${PGPORT}/\${POSTGRES_DB}
 INTERNAL_IPS=127.0.0.1,0.0.0.0
 COMPOSE_BAKE=true
 DOCKER_BUILDKIT=1
 COMPOSE_DOCKER_CLI_BUILD=1
 EOF
 
-if [[ "yes" = $(ask_yes_or_no_default_yes "Do you want to clean up Docker volumes?") ]]; then
-  just clean_docker_volumes
+if [[ "yes" = $(ask_yes_or_no_default_yes "Do you want to clean up Docker volumes and recreate database?") ]]; then
+  just clean_docker_volumes_with_db
 fi
 
 just clean_extra_files
