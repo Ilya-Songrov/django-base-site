@@ -97,9 +97,9 @@ EOF
 
 
 just clean_extra_files
-sed -i.bak "s|image: epicserve/django-base-site|image: ${PROJECT_NAME_SLUG}|" compose.yml && rm -f compose.yml.bak # macOS/linux compatibility
-sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG}|" justfile && rm -f justfile.bak # macOS/linux compatibility
-sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG}|" config/docker/Dockerfile.web && rm -f config/docker/Dockerfile.web.bak  # macOS/linux compatibility
+sed -i.bak "s|image: epicserve/django-base-site|image: ${PROJECT_NAME_SLUG,,}|" compose.yml && rm -f compose.yml.bak # macOS/linux compatibility
+sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG,,}|" justfile && rm -f justfile.bak # macOS/linux compatibility
+sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG,,}|" config/docker/Dockerfile.web && rm -f config/docker/Dockerfile.web.bak  # macOS/linux compatibility
 find ./public -name ".keep" | xargs rm -rf
 
 echo ""
