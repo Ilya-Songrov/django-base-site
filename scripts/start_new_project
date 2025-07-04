@@ -95,14 +95,8 @@ DOCKER_BUILDKIT=1
 COMPOSE_DOCKER_CLI_BUILD=1
 EOF
 
-if [[ "yes" = $(ask_yes_or_no_default_yes "Do you want to clean up Docker volumes and recreate database?") ]]; then
-  just clean_docker_volumes_with_db
-fi
 
-echo "pwd: $PWD"
-echo "ls1: $(ls)"
 just clean_extra_files
-echo "ls2: $(ls)"
 sed -i.bak "s|image: epicserve/django-base-site|image: ${PROJECT_NAME_SLUG}|" compose.yml && rm -f compose.yml.bak # macOS/linux compatibility
 sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG}|" justfile && rm -f justfile.bak # macOS/linux compatibility
 sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG}|" config/docker/Dockerfile.web && rm -f config/docker/Dockerfile.web.bak  # macOS/linux compatibility
