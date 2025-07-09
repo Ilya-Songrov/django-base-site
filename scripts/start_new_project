@@ -97,9 +97,16 @@ EOF
 
 
 just clean_extra_files
-sed -i.bak "s|image: epicserve/django-base-site|image: ${PROJECT_NAME_SLUG,,}|" compose.yml && rm -f compose.yml.bak # macOS/linux compatibility
-sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG,,}|" justfile && rm -f justfile.bak # macOS/linux compatibility
-sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG,,}|" config/docker/Dockerfile.web && rm -f config/docker/Dockerfile.web.bak  # macOS/linux compatibility
+OS_NAME=$(uname)
+if [[ "$OS_NAME" == "Darwin" ]]; then
+  sed -i '' "s|image: epicserve/django-base-site|image: ${PROJECT_NAME_SLUG}|" compose.yml
+  sed -i '' "s|django-base-site|${PROJECT_NAME_SLUG}|" justfile
+  sed -i '' "s|django-base-site|${PROJECT_NAME_SLUG}|" config/docker/Dockerfile.web
+else # linux
+  sed -i.bak "s|image: epicserve/django-base-site|image: ${PROJECT_NAME_SLUG,,}|" compose.yml && rm -f compose.yml.bak
+  sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG,,}|" justfile && rm -f justfile.bak
+  sed -i.bak "s|django-base-site|${PROJECT_NAME_SLUG,,}|" config/docker/Dockerfile.web && rm -f config/docker/Dockerfile.web.bak
+fi
 find ./public -name ".keep" | xargs rm -rf
 
 echo ""
